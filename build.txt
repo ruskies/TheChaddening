@@ -1,0 +1,5 @@
+displayName = The Chaddening
+author = Webmilio, Blockaroz
+version = 0.1
+weakReferences = SacredTools@1.1
+modReferences = WebmilioCommons@0.1.10.4

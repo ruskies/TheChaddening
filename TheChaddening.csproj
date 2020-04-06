@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\references\tModLoader.targets" />
+  <PropertyGroup>
+    <AssemblyName>TheChaddening</AssemblyName>
+    <TargetFramework>net45</TargetFramework>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Abilities\Body\PrimordialBlessing\PrimordialLiftersBlessing.png" />
+    <None Remove="Buffs\Primordial\PrimordialLifter.png" />
+    <None Remove="Buffs\Primordial\PrimordialLifterBlessing.png" />
+    <None Remove="Buffs\Primordial\PrimordialLifterBuff.png" />
+    <None Remove="Buffs\Primordial\PrimordialLiftersBlessingBuff.png" />
+    <None Remove="Buffs\Proteins\ProteinPowders\HomemadeProteinPowderBuff.png" />
+    <None Remove="Buffs\Proteins\ProteinPowders\StoreBoughtProteinPowderBuff.png" />
+    <None Remove="Buffs\Proteins\ProteinPowders\StoredBoughtProteinPowderBuff.png" />
+    <None Remove="Buffs\Proteins\ProteinShakeBuff.png" />
+    <None Remove="Buffs\Proteins\ProteinShakes\HomemadeProteinShakeBuff.png" />
+    <None Remove="Buffs\Proteins\ProteinShakes\HomemadeProteinShakeLesserBuff.png" />
+    <None Remove="Buffs\Proteins\ProteinShakes\StoreBoughtProteinShakeBuff.png" />
+    <None Remove="Abilities\Fists\Melee\Normal\HeavyPunchProjectile.png" />
+    <None Remove="Abilities\Fists\Melee\Normal\NormalPunchProjectile.png" />
+    <None Remove="Abilities\Fists\Ranged\ShockwavePunch\ShockwavePunchProjectile.png" />
+    <None Remove="Abilities\Fists\Ranged\WindBlow\NormalPunchProjectile.png" />
+    <None Remove="Abilities\Fists\Ranged\WindBlow\WindBlowProjectile.png" />
+    <None Remove="Abilities\Fists\Ranged\WindBlow\WindSmackProjectile.png" />
+    <None Remove="Abilities\Fists\RotatedShockwave.png" />
+    <None Remove="Items\Accessories\WorkoutStraps.png" />
+    <None Remove="Items\Accessories\WorkoutStraps_Arms.png" />
+    <None Remove="Items\BlenderBottle.png" />
+    <None Remove="Items\ChopHand.png" />
+    <None Remove="Items\Consumables\DragonsBlood.png" />
+    <None Remove="Items\Consumables\Preworkouts\PreworkoutPowders\BloodRushPowder.png" />
+    <None Remove="Items\Consumables\Preworkouts\PreworkoutPowders\BloodRushPowderItem.png" />
+    <None Remove="Items\Consumables\Preworkouts\PreworkoutPowders\CandyFuelPowder.png" />
+    <None Remove="Items\Consumables\Preworkouts\PreworkoutPowders\CandyFuelPowderItem.png" />
+    <None Remove="Items\Consumables\Preworkouts\PreworkoutPowders\NoNameProteinPowder.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinPowder.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinPowderItem.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinPowders\CraftedProteinPowderItem.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinPowders\HomemadeProteinPowder.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinPowders\HomemadeProteinPowderItem.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinPowders\ProteinPowderItem.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinPowders\StoreBoughtProteinPowder.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinPowders\StoreBoughtProteinPowderItem.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinShakes\BlenderBottle.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinShakes\BlueberryProteinShake.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinShakes\BlueberryProteinShakeItem.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinShakes\DefaultProteinShake.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinShakes\HomemadeBlueberryProteinShake.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinShakes\HomemadeProteinShakeItem.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinShakes\HomemadeProteinShakeLesser.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinShakes\HomemadeProteinShakeLesserItem.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinShakes\HomemadeQualityProteinShake.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinShakes\HomemadeQualityProteinShakeItem.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinShakes\PumpkinPieProteinShake.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinShakes\StoreBoughtBlueberryProteinShake.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinShakes\StoreBoughtBlueberryProteinShakeItem.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinShakes\StoreBoughtPumpkinPieProteinShake.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinShakes\StoreBoughtPumpkinPieProteinShakeItem.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinShakes\StoredBoughtBlueberryProteinShake.png" />
+    <None Remove="Items\Consumables\Proteins\ProteinShakes\StoredBoughtPumpkinPieProteinShake.png" />
+    <None Remove="Items\Consumables\Proteins\StoreBoughtProteinPowderItem.png" />
+    <None Remove="Items\Dumbbells\Barbell200KG.png" />
+    <None Remove="Items\Dumbbells\Barbell200KGItem.png" />
+    <None Remove="Items\Dumbbells\BasicDumbbell.png" />
+    <None Remove="Items\Dumbbells\BasicDumbbellItem.png" />
+    <None Remove="Items\Dumbbells\BoneShatteringDumbbell.png" />
+    <None Remove="Items\Dumbbells\BoneShatteringDumbbellItem.png" />
+    <None Remove="Items\Dumbbells\CaravanCarry.png" />
+    <None Remove="Items\Dumbbells\EyeDumbbell.png" />
+    <None Remove="Items\Dumbbells\EyeDumbbellItem.png" />
+    <None Remove="Items\Dumbbells\EyeDumbellItem.png" />
+    <None Remove="Items\Dumbbells\HoneyHandle.png" />
+    <None Remove="Items\Dumbbells\HoneyHandleItem.png" />
+    <None Remove="Items\Dumbbells\JungoBungoLifto.png" />
+    <None Remove="Items\Dumbbells\LeechingLift.png" />
+    <None Remove="Items\Dumbbells\LeechingLiftItem.png" />
+    <None Remove="Items\Dumbbells\MechanicalDumbbellItem.png" />
+    <None Remove="Items\Dumbbells\PrimordialRock.png" />
+    <None Remove="Items\Dumbbells\RottenDumbbell.png" />
+    <None Remove="Items\Dumbbells\RottenDumbbellItem.png" />
+    <None Remove="Items\Dumbbells\SlimeyDumbbell.png" />
+    <None Remove="Items\Dumbbells\SlimeyDumbbellItem.png" />
+    <None Remove="Items\Dumbbells\SlimyDumbbellItem.png" />
+    <None Remove="Items\Dumbbells\WeightofFlesh.png" />
+    <None Remove="Items\Dumbbells\WeightofFleshItem.png" />
+    <None Remove="Items\Fist.png" />
+    <None Remove="Items\Hand.png" />
+    <None Remove="Items\PrimordialLiftersBlessing.png" />
+    <None Remove="UserInterfaces\Charge\ChargeBar.png" />
+    <None Remove="UserInterfaces\Strength\StrengthBar.png" />
+    <None Remove="UserInterfaces\Strength\StrengthBarOld.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Items\Armors\DoublePlatedLeadARmor\" />
+    <Folder Include="Items\Consumables\Preworkouts\PreworkoutDrinks\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebmilioCommons\WebmilioCommons.csproj" />
+  </ItemGroup>
+  <Target Name="BuildMod" AfterTargets="Build">
+    <Exec Command="&quot;$(tMLBuildServerPath)&quot; -build $(ProjectDir) -eac $(TargetPath) -define $(DefineConstants) -unsafe $(AllowUnsafeBlocks)" />
+  </Target>
+</Project>
