@@ -99,11 +99,13 @@
     <None Remove="UserInterfaces\Strength\StrengthBarOld.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Items\Armors\DoublePlatedLeadARmor\" />
+    <Folder Include="Items\Armors\DoublePlatedLeadArmor\" />
     <Folder Include="Items\Consumables\Preworkouts\PreworkoutDrinks\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebmilioCommons\WebmilioCommons.csproj" />
+    <Reference Include="WebmilioCommons">
+      <HintPath>..\WebmilioCommons-Releases\WebmilioCommons.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Target Name="BuildMod" AfterTargets="Build">
     <Exec Command="&quot;$(tMLBuildServerPath)&quot; -build $(ProjectDir) -eac $(TargetPath) -define $(DefineConstants) -unsafe $(AllowUnsafeBlocks)" />

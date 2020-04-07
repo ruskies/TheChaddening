@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using TheChaddening.Items;
@@ -15,12 +16,15 @@ namespace TheChaddening.NPCs
         {
             if (!Main.expertMode)
             {
+                Rectangle rect = npc.getRect();
+
+
                 if (npc.type == NPCID.KingSlime && Main.rand.NextBool(5))
-                    Item.NewItem(npc.getRect(), ModContent.ItemType<SlimeyDumbbell>());
+                    Item.NewItem(rect, ModContent.ItemType<SlimeyDumbbell>());
                 else if (npc.type == NPCID.BrainofCthulhu && Main.rand.NextBool(5))
-                    Item.NewItem(npc.getRect(), ModContent.ItemType<LeechingLift>());
+                    Item.NewItem(rect, ModContent.ItemType<LeechingLift>());
                 else if (npc.type == NPCID.MoonLordCore && Main.rand.NextBool(10))
-                    Item.NewItem(npc.getRect(), ModContent.ItemType<Barbell200Kg>());
+                    Item.NewItem(rect, ModContent.ItemType<Barbell200Kg>());
                 else if (npc.type == NPCID.EaterofWorldsHead || npc.type == NPCID.EaterofWorldsBody || npc.type == NPCID.EaterofWorldsTail)
                 {
                     bool anyLeft = false;
@@ -33,8 +37,8 @@ namespace TheChaddening.NPCs
                         }
 
 
-                    if (anyLeft && Main.rand.NextBool(5))
-                        Item.NewItem(npc.getRect(), ModContent.ItemType<RottenDumbbell>());
+                    if (!anyLeft && Main.rand.NextBool(5))
+                        Item.NewItem(rect, ModContent.ItemType<RottenDumbbell>());
                 }
             }
         }

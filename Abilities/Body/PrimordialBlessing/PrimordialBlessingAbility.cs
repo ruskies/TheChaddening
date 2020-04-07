@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using TheChaddening.Players;
+using WebmilioCommons.Extensions;
 
 namespace TheChaddening.Abilities.Body.PrimordialBlessing
 {
@@ -30,6 +31,11 @@ namespace TheChaddening.Abilities.Body.PrimordialBlessing
                 ModContent.ItemType<PrimordialLiftersBlessing>(), 1)].modItem as PrimordialLiftersBlessing;
 
             blessing.PrimordialGeneration = chad.PrimordialGeneration + 1;
+
+
+            if (chad.IsLocalPlayer())
+                blessing.Synchronize();
+
 
             return true;
         }
