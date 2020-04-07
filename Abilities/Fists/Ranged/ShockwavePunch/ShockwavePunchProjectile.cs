@@ -7,22 +7,28 @@ namespace TheChaddening.Abilities.Fists.Ranged.ShockwavePunch
 {
     public sealed class ShockwavePunchProjectile : ChadProjectile
     {
-        public ShockwavePunchProjectile() : base("Shockwave", 32, 32, true)
+        public ShockwavePunchProjectile() : base("Shockwave", 42, 256, true)
         {
         }
 
+        public override void SetStaticDefaults()
+        {
+            Main.projFrames[projectile.type] = 8;
+        }
 
         public override void SetDefaults()
         {
             base.SetDefaults();
 
+            projectile.height = 42;
+            projectile.width = 32;
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
-            projectile.alpha = 255;
+            projectile.alpha = 40;
 
             projectile.melee = true;
             projectile.timeLeft = (int) ShockwavePunchAbility.PROJECTILE_TIME;
-            projectile.penetrate = 255;
+            projectile.penetrate = -1;
 
             projectile.friendly = true;
 
@@ -30,14 +36,19 @@ namespace TheChaddening.Abilities.Fists.Ranged.ShockwavePunch
             projectile.localNPCHitCooldown = -1;
         }
 
-
-        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        public override void AI()
         {
-            Texture2D texture = Main.projectileTexture[projectile.type];
-
-            spriteBatch.Draw(texture, projectile.position, new Rectangle(0, 0, texture.Width, texture.Height), Color.White, projectile.velocity.X == -1 ? -90f : 90f, Vector2.Zero, Vector2.One, SpriteEffects.None, 0);
-
-            return false;
+            projectile.frameCounter++;
+            if (projectile.frameCounter > 8)
+            {
+                projectile.frame++;
+                projectile.frameCounter = 0;
+            }
+            if (projectile.frame >= 8)
+            {
+                projectile.frame = 0;
+            }
+            projectile.rotation = projectile.velocity.ToRotation() + MathHelper.Pi;
         }
     }
 }
