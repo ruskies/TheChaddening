@@ -94,6 +94,7 @@
     <None Remove="Items\Fist.png" />
     <None Remove="Items\Hand.png" />
     <None Remove="Items\PrimordialLiftersBlessing.png" />
+    <None Remove="TheChaddening.csproj.DotSettings" />
     <None Remove="UserInterfaces\Charge\ChargeBar.png" />
     <None Remove="UserInterfaces\Strength\StrengthBar.png" />
     <None Remove="UserInterfaces\Strength\StrengthBarOld.png" />

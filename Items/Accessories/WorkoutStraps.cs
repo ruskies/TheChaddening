@@ -2,7 +2,7 @@
 
 namespace TheChaddening.Items.Accessories
 {
-    public sealed class WorkoutStraps : TheChaddeningItem
+    public sealed class WorkoutStraps : ChadItem
     {
         public WorkoutStraps() : base("Workout Straps", "", 20, 26, defense: 1)
         {

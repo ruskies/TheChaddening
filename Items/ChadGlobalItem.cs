@@ -6,7 +6,7 @@ using TheChaddening.Players;
 
 namespace TheChaddening.Items
 {
-    public sealed class TheChaddeningGlobalItem : GlobalItem
+    public sealed class ChadGlobalItem : GlobalItem
     {
         public override void ModifyWeaponDamage(Item item, Player player, ref float add, ref float mult, ref float flat)
         {
@@ -22,12 +22,12 @@ namespace TheChaddening.Items
                 }
             }
             else if (item.melee)
-                flat = ModContent.GetInstance<TheChaddeningGlobalConfiguration>().MeleeScaling * tcp.Strength;
+                flat = ModContent.GetInstance<ChadGlobalConfiguration>().MeleeScaling * tcp.Strength;
         }
 
         public override void UpdateInventory(Item item, Player player)
         {
-            if (item?.modItem is TheChaddeningItem || !TheChaddeningPlayer.Get(player).TrueChad)
+            if (item?.modItem is ChadItem || !TheChaddeningPlayer.Get(player).TrueChad)
                 return;
 
             item.pick = 0;

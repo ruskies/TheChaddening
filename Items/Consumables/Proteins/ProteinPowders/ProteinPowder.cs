@@ -4,7 +4,7 @@ using WebmilioCommons.Extensions;
 
 namespace TheChaddening.Items.Consumables.Proteins.ProteinPowders
 {
-    public abstract class ProteinPowder<TBuff> : TheChaddeningConsumableItem where TBuff : ProteinPowderBuff
+    public abstract class ProteinPowder<TBuff> : ChadConsumableItem where TBuff : ProteinPowderBuff
     {
         private const int DURATION = 20 * Constants.TICKS_PER_SECOND;
 

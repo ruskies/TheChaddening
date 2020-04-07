@@ -6,7 +6,7 @@ using TheChaddening.Buffs.Proteins.ProteinPowders;
 
 namespace TheChaddening.Items.Consumables.Preworkouts
 {
-    public abstract class PreworkoutPowder<TBuff> : TheChaddeningConsumableItem where TBuff : PreworkoutBuff
+    public abstract class PreworkoutPowder<TBuff> : ChadConsumableItem where TBuff : PreworkoutBuff
     {
         private const int DURATION = 20 * Constants.TICKS_PER_SECOND;
 

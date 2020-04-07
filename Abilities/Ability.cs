@@ -38,7 +38,7 @@ namespace TheChaddening.Abilities
         protected void FireProjectile<T>(TheChaddeningPlayer chad, ulong strengthCharged, float speed, float damageScaling, float knockbackScaling) where T : ModProjectile
         {
             Projectile.NewProjectile(new Vector2(chad.player.position.X + chad.player.width / 2, chad.player.position.Y + chad.player.height / 2), 
-                TheChaddeningMath.CalculateSpeedForMouse(chad.player, speed), ModContent.ProjectileType<T>(), 
+                ChadMath.CalculateSpeedForMouse(chad.player, speed), ModContent.ProjectileType<T>(), 
                 (int)(strengthCharged * damageScaling), strengthCharged * knockbackScaling, chad.player.whoAmI);
         }
 

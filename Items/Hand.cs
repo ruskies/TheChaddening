@@ -5,7 +5,7 @@ using TheChaddening.Players;
 
 namespace TheChaddening.Items
 {
-    public sealed class Hand : TheChaddeningItem
+    public sealed class Hand : ChadItem
     {
         public Hand() : base("Your Hands", "These are your hands. By putting one in the shape of a claw, you're able to dig anything, as long as you're strength allows it.\nYou could drop them, but that wouldn't make any sense.", 30, 34, rarity: ItemRarityID.Expert)
         {
@@ -29,7 +29,7 @@ namespace TheChaddening.Items
         {
             base.UpdateInventory(player);
 
-            item.pick = TheChaddeningMath.GetPickaxePower(TheChaddeningPlayer.Get(player).Strength);
+            item.pick = ChadMath.GetPickaxePower(TheChaddeningPlayer.Get(player).Strength);
         }
     }
 }

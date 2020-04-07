@@ -5,7 +5,7 @@ using TheChaddening.Players;
 
 namespace TheChaddening.Items
 {
-    public sealed class ChopHand : TheChaddeningItem
+    public sealed class ChopHand : ChadItem
     {
         public ChopHand() : base("Your Choppy Hands", "These are your hands. By constricting your hand, you're able to chop down anything, as long as you're strength allows it.\nComes with the added bonus of being able to taket down walls.\nYou could drop them, but that wouldn't make any sense.", 34, 30, rarity: ItemRarityID.Expert)
         {
@@ -30,7 +30,7 @@ namespace TheChaddening.Items
         {
             base.UpdateInventory(player);
 
-            int power = TheChaddeningMath.GetAxePower(TheChaddeningPlayer.Get(player).Strength);
+            int power = ChadMath.GetAxePower(TheChaddeningPlayer.Get(player).Strength);
 
             item.axe = power / 5;
             item.hammer = power;

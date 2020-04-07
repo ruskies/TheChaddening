@@ -4,7 +4,7 @@ using TheChaddening.Players;
 
 namespace TheChaddening.Items.Consumables
 {
-    public sealed class DragonsBlood : TheChaddeningConsumableItem
+    public sealed class DragonsBlood : ChadConsumableItem
     {
         public DragonsBlood() : base("Dragon's Blood", "The blood of a dragon", 22, 34, rarity: ItemRarityID.Red)
         {

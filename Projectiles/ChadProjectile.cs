@@ -1,16 +1,17 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 using TheChaddening.Players;
+using WebmilioCommons.Projectiles;
 
 namespace TheChaddening.Projectiles
 {
-    public class TheChaddeningProjectile : ModProjectile
+    public class ChadProjectile : StandardProjectile
     {
         private readonly string _displayName;
         private readonly int _width, _height;
 
 
-        protected TheChaddeningProjectile(string displayName, int width, int height, bool cloneNewInstances = true)
+        protected ChadProjectile(string displayName, int width, int height, bool cloneNewInstances = true)
         {
             _displayName = displayName;
 

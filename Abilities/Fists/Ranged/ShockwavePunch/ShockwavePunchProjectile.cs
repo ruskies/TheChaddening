@@ -5,7 +5,7 @@ using TheChaddening.Projectiles;
 
 namespace TheChaddening.Abilities.Fists.Ranged.ShockwavePunch
 {
-    public sealed class ShockwavePunchProjectile : TheChaddeningProjectile
+    public sealed class ShockwavePunchProjectile : ChadProjectile
     {
         public ShockwavePunchProjectile() : base("Shockwave", 32, 32, true)
         {

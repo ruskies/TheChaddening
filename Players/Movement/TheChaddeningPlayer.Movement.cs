@@ -8,7 +8,7 @@ namespace TheChaddening.Players
     {
         public float GetMoveSpeed(ulong strength)
         {
-            return strength * TheChaddeningMath.SPEED_SCALING_RATIO;
+            return strength * ChadMath.SPEED_SCALING_RATIO;
         }
 
 

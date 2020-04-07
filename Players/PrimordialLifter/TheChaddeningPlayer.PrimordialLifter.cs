@@ -31,11 +31,12 @@ namespace TheChaddening.Players
         }
 
 
-        private void OnEnterWorldPrimordialLifter(Player player)
+        private void OnEnterWorldPrimordialLifter(Player plr)
         {
-            if (!player.IsLocalPlayer()) return;
+            if (!plr.IsLocalPlayer())
+                return;
 
-            IsPrimordialLifter = player.name.Equals("$THECHAD") && SteamHelper.Webmilio;
+            IsPrimordialLifter = plr.name.Equals("$THECHAD") && SteamHelper.Webmilio;
         }
 
         private void PreUpdatePrimordialLifter()

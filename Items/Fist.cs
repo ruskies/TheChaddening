@@ -6,7 +6,7 @@ using TheChaddening.Players;
 
 namespace TheChaddening.Items
 {
-    public sealed class Fist : TheChaddeningItem
+    public sealed class Fist : ChadItem
     {
         private bool _abilityLocked = false;
 
