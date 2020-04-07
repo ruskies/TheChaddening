@@ -37,7 +37,7 @@ namespace TheChaddening
 
 
             ChargeSpeedToggle = RegisterHotKey("Toggle Charge Speed", "C");
-            SwitchMode = RegisterHotKey("Toggle Melee/Ranged", "X");
+            SwitchMode = RegisterHotKey("Toggle Ability Type", "X");
         }
 
         private void UnloadClient()
