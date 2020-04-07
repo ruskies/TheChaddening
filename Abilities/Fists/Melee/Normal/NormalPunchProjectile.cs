@@ -2,7 +2,7 @@
 
 namespace TheChaddening.Abilities.Fists.Melee.Normal
 {
-    public sealed class NormalPunchProjectile : TheChaddeningProjectile
+    public sealed class NormalPunchProjectile : ChadProjectile
     {
         public NormalPunchProjectile() : base("Punch", 10, 10, true)
         {

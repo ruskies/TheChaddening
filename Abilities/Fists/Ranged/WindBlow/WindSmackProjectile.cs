@@ -2,7 +2,7 @@
 
 namespace TheChaddening.Abilities.Fists.Ranged.WindBlow
 {
-    public class WindSmackProjectile : TheChaddeningProjectile
+    public class WindSmackProjectile : ChadProjectile
     {
         public WindSmackProjectile() : base("Wind Blow", 10, 10, true)
         {

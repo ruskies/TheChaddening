@@ -9,7 +9,7 @@ using TheChaddening.Players;
 
 namespace TheChaddening.Abilities.Body.PrimordialBlessing
 {
-    public class PrimordialLiftersBlessing : TheChaddeningItem
+    public class PrimordialLiftersBlessing : ChadItem
     {
         public PrimordialLiftersBlessing() : base("Primordial Lifter's Blessing", "", 22, 28, value: ItemRarityID.Expert)
         {

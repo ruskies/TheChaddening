@@ -4,12 +4,12 @@ using Terraria.ModLoader;
 
 namespace TheChaddening.Items
 {
-    public abstract class TheChaddeningItem : ModItem
+    public abstract class ChadItem : ModItem
     {
         private readonly string _displayName, _tooltip;
         private readonly int _width, _height;
 
-        protected TheChaddeningItem(string displayName, string tooltip, int width, int height, int value = 0, int defense = 0, int rarity = ItemRarityID.White)
+        protected ChadItem(string displayName, string tooltip, int width, int height, int value = 0, int defense = 0, int rarity = ItemRarityID.White)
         {
             _displayName = displayName;
             _tooltip = tooltip;

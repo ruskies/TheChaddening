@@ -2,7 +2,7 @@
 
 namespace TheChaddening.Buffs.Preworkout
 {
-    public abstract class PreworkoutBuff : TheChaddeningBuff
+    public abstract class PreworkoutBuff : ChadBuff
     {
         protected PreworkoutBuff(string displayName, float curlingSpeedMultiplier) : base(displayName, $"You curl {curlingSpeedMultiplier * 100}% faster", save: true, persistent: false, canBeCleared: false)
         {

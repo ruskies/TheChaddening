@@ -5,7 +5,7 @@ using WebmilioCommons.Extensions;
 
 namespace TheChaddening.Items.Consumables.Proteins.ProteinShakes
 {
-    public abstract class ProteinShake<TBuff> : TheChaddeningConsumableItem where TBuff : ProteinShakeBuff
+    public abstract class ProteinShake<TBuff> : ChadConsumableItem where TBuff : ProteinShakeBuff
     {
         protected ProteinShake(string displayName, string tooltip, float curlingGainMultiplier, int value) : base(displayName, tooltip + $"Makes your curling {curlingGainMultiplier * 100}% more efficient", 34, 34, value: value, rarity: ItemRarityID.Orange)
         {

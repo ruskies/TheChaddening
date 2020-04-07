@@ -11,7 +11,7 @@ namespace TheChaddening.Abilities.Fists.Melee.God
 
         public override bool OnChargeRelease(TheChaddeningPlayer chad, int chargedForFrames, ulong strengthCharged, bool local)
         {
-            throw new System.NotImplementedException();
+            return true;
         }
     }
 }

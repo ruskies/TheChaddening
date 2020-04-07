@@ -10,7 +10,7 @@ using WebmilioCommons.Globals;
 
 namespace TheChaddening.NPCs
 {
-    public sealed class TheChaddeningGlobalNPC : BetterGlobalNPC
+    public sealed class ChadGlobalNPC : BetterGlobalNPC
     {
         public override void NPCLoot(NPC npc)
         {

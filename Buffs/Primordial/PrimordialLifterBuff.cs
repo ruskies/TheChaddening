@@ -3,7 +3,7 @@ using TheChaddening.Players;
 
 namespace TheChaddening.Buffs.Primordial
 {
-    public sealed class PrimordialLifterBuff : TheChaddeningBuff
+    public sealed class PrimordialLifterBuff : ChadBuff
     {
         public PrimordialLifterBuff() : base("Primordial Lifter", "You are the first one to ever lift.\n", true, canBeCleared: false)
         {

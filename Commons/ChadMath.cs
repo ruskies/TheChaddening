@@ -3,7 +3,7 @@ using Terraria;
 
 namespace TheChaddening.Commons
 {
-    public static class TheChaddeningMath
+    public static class ChadMath
     {
         public const float
             STRENGTH_HEALTH_RATIO = 5 / 1000f,

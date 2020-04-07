@@ -7,7 +7,7 @@ using TheChaddening.Players;
 
 namespace TheChaddening.Items.Dumbbells
 {
-    public abstract class Dumbbell : TheChaddeningItem
+    public abstract class Dumbbell : ChadItem
     {
         public const string
             TERRARIA_DESCRIPTION_TOOLTIP = "Tooltip0",

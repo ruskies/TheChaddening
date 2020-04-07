@@ -45,11 +45,11 @@ namespace TheChaddening.Players
         }
 
 
-        public override void OnEnterWorld(Player player)
+        public override void OnEnterWorld(Player plr)
         {
-            OnEnterWorldPrimordialLifter(player);
+            OnEnterWorldPrimordialLifter(plr);
 
-            this.SendIfLocal<PlayerSynchronizationPacket>();
+            plr.SendIfLocal<PlayerSynchronizationPacket>();
         }
 
 
@@ -65,7 +65,7 @@ namespace TheChaddening.Players
 
         public override void PreUpdate()
         {
-            if (!ModContent.GetInstance<TheChaddeningGlobalConfiguration>().ChadChallenge)
+            if (!ModContent.GetInstance<ChadGlobalConfiguration>().ChadChallenge)
                 TrueChad = false;
 
             if (player.GetItemsByType<Hand>(inventory: true).Count == 0)
@@ -90,7 +90,7 @@ namespace TheChaddening.Players
             ResetEffectsPrimordialLifter();
 
 
-            player.statLifeMax2 += TheChaddeningMath.GetExtraHealth(Strength);
+            player.statLifeMax2 += ChadMath.GetExtraHealth(Strength);
         }
 
 
