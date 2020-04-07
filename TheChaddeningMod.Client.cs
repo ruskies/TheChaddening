@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Terraria.ModLoader;
 using Terraria.UI;
-using TheChaddening.Helpers;
 using TheChaddening.UserInterfaces;
 using TheChaddening.UserInterfaces.Charge;
 using TheChaddening.UserInterfaces.Strength;
@@ -19,8 +18,6 @@ namespace TheChaddening
 
         private void LoadClient()
         {
-            SteamHelper.Initialize();
-
             strengthBar = new StrengthBar();
             strengthBar.Activate();
             

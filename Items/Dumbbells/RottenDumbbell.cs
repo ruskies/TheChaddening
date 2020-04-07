@@ -12,7 +12,9 @@ namespace TheChaddening.Items.Dumbbells
 
         public static readonly int value = Item.sellPrice(silver: 80);
 
-        public RottenDumbbell() : base("Rotten Dumbbell", "After witnessing the Eater of Worlds' strength, you were inspired to craft a dumbbell out of its carcass\nThe smell trains your nose", 
+        public RottenDumbbell() : base("Rotten Dumbbell", 
+            "After witnessing the Eater of Worlds' strength, you were inspired to craft a dumbbell out of its carcass.\n" +
+            "The smell trains your nose", 
             40, 42, REQUIRED_STRENGTH, GAINS_PER_CURL, value: value, rarity: RARITY)
         {
         }

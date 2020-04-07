@@ -26,6 +26,13 @@ namespace TheChaddening
             }
         }
 
+        public override void PostSetupContent()
+        {
+            var globalConfig = ModContent.GetInstance<ChadGlobalConfiguration>();
+
+            PrimordialGenes = globalConfig.PrimordialGenes;
+        }
+
         public override void Unload()
         {
             if (!Main.dedServ)
@@ -38,6 +45,9 @@ namespace TheChaddening
 
 
         public override void HandlePacket(BinaryReader reader, int whoAmI) => NetworkPacketLoader.Instance.HandlePacket(reader, whoAmI);
+
+
+        public bool PrimordialGenes { get; private set; }
 
 
         public static TheChaddeningMod Instance { get; private set; }

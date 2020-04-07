@@ -1,8 +1,10 @@
 ﻿using Terraria;
+using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using TheChaddening.Buffs.Primordial;
-using TheChaddening.Helpers;
+using TheChaddening.Identities;
 using WebmilioCommons.Extensions;
+using WebmilioCommons.Identity;
 
 namespace TheChaddening.Players
 {
@@ -36,32 +38,32 @@ namespace TheChaddening.Players
             if (!plr.IsLocalPlayer())
                 return;
 
-            IsPrimordialLifter = plr.name.Equals("$THECHAD") && SteamHelper.Webmilio;
+            IsPrimordialLifter = plr.name.Equals("$THECHAD") && IdentityManager.Is<WebmilioIdentity>();
         }
 
         private void PreUpdatePrimordialLifter()
         {
-            if (TrueChad)
+            if (TrueChad && TheChaddeningMod.Instance.PrimordialGenes)
             {
                 if (IsPrimordialLifter)
                 {
                     IsPrimordialChild = false;
 
-                    if (!player.HasBuff<PrimordialLifterBuff>())
-                        player.AddBuff<PrimordialLifterBuff>(int.MaxValue);
+                    player.AddBuff<PrimordialLifterBuff>(3);
                 }
-                else if (IsPrimordialChild && !player.HasBuff<PrimordialLiftersBlessingBuff>())
-                    player.AddBuff<PrimordialLiftersBlessingBuff>(int.MaxValue);
+                else if (IsPrimordialChild)
+                    player.AddBuff<PrimordialLiftersBlessingBuff>(3);
             }
             else
             {
                 if (IsPrimordialChild)
-                {
                     IsPrimordialChild = false;
-                    player.ClearBuff<PrimordialLiftersBlessingBuff>();
-                }
+
+                player.ClearBuff<PrimordialLifterBuff>();
+                player.ClearBuff<PrimordialLiftersBlessingBuff>();
             }
         }
+
 
         private void ResetEffectsPrimordialLifter()
         {
@@ -86,7 +88,12 @@ namespace TheChaddening.Players
         public bool IsPrimordialLifter
         {
             get => _isPrimordialLifter;
-            internal set => _isPrimordialLifter = value;
+            internal set
+            {
+                System.Diagnostics.Debug.WriteLine("Set `{0}` to `{1}`.", nameof(_isPrimordialLifter), value);
+
+                _isPrimordialLifter = value;
+            }
         }
 
         public bool IsPrimordialChild { get; internal set; }
