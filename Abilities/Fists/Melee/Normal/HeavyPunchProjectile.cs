@@ -6,6 +6,7 @@ namespace TheChaddening.Abilities.Fists.Melee.Normal
     {
         public HeavyPunchProjectile() : base("Punch", 10, 10, true)
         {
+            DamageScalesDownWithHits = true;
         }
 
 

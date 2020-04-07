@@ -9,6 +9,7 @@ namespace TheChaddening.Projectiles
         private readonly string _displayName;
         private readonly int _width, _height;
 
+
         protected TheChaddeningProjectile(string displayName, int width, int height, bool cloneNewInstances = true)
         {
             _displayName = displayName;
@@ -18,6 +19,7 @@ namespace TheChaddening.Projectiles
 
             CloneNewInstances = cloneNewInstances;
         }
+
 
         public override void SetStaticDefaults()
         {
@@ -46,8 +48,45 @@ namespace TheChaddening.Projectiles
         }
 
 
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            if (!DamageScalesDownWithHits)
+            {
+                base.OnHitNPC(target, damage, knockback, crit);
+                return;
+            }
+
+
+            RemoveDamage(target.life);
+        }
+
+        public override void OnHitPlayer(Player target, int damage, bool crit)
+        {
+            if (!DamageScalesDownWithHits)
+            {
+                base.OnHitPlayer(target, damage, crit);
+                return;
+            }
+
+
+            RemoveDamage(target.statLife);
+        }
+
+
+        protected void RemoveDamage(int damage)
+        {
+            projectile.damage -= damage;
+
+            if (projectile.damage <= 0)
+                projectile.timeLeft = 0;
+        }
+
+
         public TheChaddeningPlayer Owner { get; protected set; }
 
         public override bool CloneNewInstances { get; }
+
+
+        public bool DamageScalesDownWithHits { get; protected set; } = true;
     }
 }

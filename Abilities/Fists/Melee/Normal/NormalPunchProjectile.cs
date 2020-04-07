@@ -6,6 +6,7 @@ namespace TheChaddening.Abilities.Fists.Melee.Normal
     {
         public NormalPunchProjectile() : base("Punch", 10, 10, true)
         {
+            DamageScalesDownWithHits = false;
         }
 
 
@@ -19,12 +20,9 @@ namespace TheChaddening.Abilities.Fists.Melee.Normal
 
             projectile.melee = true;
             projectile.timeLeft = (int) NormalPunchAbility.PROJECTILE_TIME;
-            projectile.penetrate = -1;
+            projectile.penetrate = 1;
 
             projectile.friendly = true;
-
-            projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = -1;
         }
     }
 }
