@@ -9,6 +9,14 @@ namespace TheChaddening.UserInterfaces.Charge
 {
     public class ChargeBar : UIState, IHasVisibility
     {
+        public const float 
+            HALIGN = 0.8f,
+            VALIGN = 0.9f;
+
+        public const int 
+            HEIGHT = 150,
+            WIDTH = 300;
+
         private static readonly string _barTexturePath = typeof(ChargeBar).GetPath();
 
         private UIPanel _mainPanel;
@@ -20,10 +28,10 @@ namespace TheChaddening.UserInterfaces.Charge
         {
             _mainPanel = new UIPanel();
 
-            _mainPanel.VAlign = 0.80f;
-            _mainPanel.HAlign = 0.9f;
-            _mainPanel.Height.Set(150, 0);
-            _mainPanel.Width.Set(300, 0);
+            _mainPanel.VAlign = HALIGN;
+            _mainPanel.HAlign = VALIGN;
+            _mainPanel.Height.Set(HEIGHT, 0);
+            _mainPanel.Width.Set(WIDTH, 0);
 
             _mainPanel.BackgroundColor = new Color(40, 40, 40, 100);
 

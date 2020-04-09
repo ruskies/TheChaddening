@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.UI;
+using TheChaddening.UserInterfaces.Charge;
 using WebmilioCommons.Extensions;
 
 namespace TheChaddening.UserInterfaces.Strength
@@ -22,14 +23,17 @@ namespace TheChaddening.UserInterfaces.Strength
         {
             _mainPanel = new UIPanel();
 
-            _mainPanel.VAlign = 0.85f;
+            _mainPanel.Top.Set(Main.screenHeight * ChargeBar.VALIGN + (7 - ChargeBar.HEIGHT / 2), 0);
             _mainPanel.HAlign = 0.9f;
+
             _mainPanel.Height.Set(muscleTexture.Height * 2, 0);
             _mainPanel.Width.Set(300, 0);
+
             _mainPanel.SetPadding(15f);
             _mainPanel.BackgroundColor = new Color(40, 40, 40, 100);
 
             Append(_mainPanel);
+
 
             UIImage muscleImage = new UIImage(muscleTexture);
             _mainPanel.Append(muscleImage);

@@ -8,7 +8,11 @@ namespace TheChaddening.Items
 {
     public sealed class Fist : ChadItem
     {
-        private bool _abilityLocked = false;
+        private bool 
+            _abilityLocked = false,
+            _mouseRight;
+
+
 
         public Fist() : base("Your Fists", "These are your fists, the only weapons you'll ever need.\nYou could drop them, but that wouldn't make any sense.", 26, 30, rarity: ItemRarityID.Expert)
         {
@@ -42,23 +46,30 @@ namespace TheChaddening.Items
                 LockedInAbility = null;
             }
 
+
             if (player.channel)
             {
                 ChargedForFrames++;
 
-                TheChaddeningPlayer tcp = TheChaddeningPlayer.Get(player);
-                TriggersSet triggersSet = tcp.TriggersSet;
+                TheChaddeningPlayer chad = TheChaddeningPlayer.Get(player);
+                TriggersSet triggersSet = chad.TriggersSet;
 
-                tcp.ChargeStrength(percentagePerSecond: 0.25f);
+                chad.ChargeStrength(percentagePerSecond: 0.25f);
 
-                if (LockedInAbility == null)
-                    CurrentAbility = AbilityLoader.Instance.GetLastAbility(tcp, tcp.PunchingMode);
+                if (LockedInAbility == default)
+                    CurrentAbility = AbilityLoader.Instance.GetLastAbility(chad, chad.PunchingMode);
 
-                if (triggersSet != null && triggersSet.MouseRight)
-                    LockedInAbility = AbilityLoader.Instance.GetLastAbility(tcp, tcp.PunchingMode);
+                if (triggersSet != default)
+                {
+                    if (chad.TriggersSet.MouseRight && !_mouseRight) 
+                        LockedInAbility = LockedInAbility == default ? AbilityLoader.Instance.GetLastAbility(chad, chad.PunchingMode) : default;
+
+                    _mouseRight = triggersSet.MouseRight;
+                }
 
                 return true;
             }
+
 
             return base.UseItem(player);
         }

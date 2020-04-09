@@ -81,6 +81,11 @@ namespace TheChaddening.Players
             PreUpdatePrimordialLifter();
         }
 
+        public override void PreUpdateMovement()
+        {
+            PreUpdateMovementGains();
+        }
+
 
         public override void ResetEffects()
         {
@@ -98,15 +103,19 @@ namespace TheChaddening.Players
         {
             List<Item> toRemove = new List<Item>();
 
+
             foreach (Item item in items)
                 if (item.type == ItemID.CopperPickaxe || item.type == ItemID.CopperAxe || item.type == ItemID.CopperShortsword)
                     toRemove.Add(item);
 
+
             for (int i = 0; i < toRemove.Count; i++)
                 items.Remove(toRemove[i]);
 
+
             ModItem dumbbell = new BasicDumbbell();
             dumbbell.item.SetDefaults(ModContent.ItemType<BasicDumbbell>());
+
 
             items.Add(dumbbell.item);
         }

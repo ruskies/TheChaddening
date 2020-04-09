@@ -18,15 +18,6 @@ namespace TheChaddening
 
         private void LoadClient()
         {
-            strengthBar = new StrengthBar();
-            strengthBar.Activate();
-            
-            strengthBarInterface = new UserInterface();
-            strengthBarInterface.SetState(strengthBar);
-
-            strengthBar.Visible = true;
-
-
             chargeBar = new ChargeBar();
             chargeBar.Activate();
 
@@ -34,6 +25,15 @@ namespace TheChaddening
             chargeBarInterface.SetState(chargeBar);
 
             chargeBar.Visible = true;
+
+
+            strengthBar = new StrengthBar();
+            strengthBar.Activate();
+            
+            strengthBarInterface = new UserInterface();
+            strengthBarInterface.SetState(strengthBar);
+
+            strengthBar.Visible = true;
 
 
             ChargeSpeedToggle = RegisterHotKey("Toggle Charge Speed", "C");

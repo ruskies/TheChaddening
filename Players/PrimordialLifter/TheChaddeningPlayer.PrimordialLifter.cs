@@ -90,8 +90,6 @@ namespace TheChaddening.Players
             get => _isPrimordialLifter;
             internal set
             {
-                System.Diagnostics.Debug.WriteLine("Set `{0}` to `{1}`.", nameof(_isPrimordialLifter), value);
-
                 _isPrimordialLifter = value;
             }
         }

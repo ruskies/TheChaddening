@@ -13,7 +13,7 @@ namespace TheChaddening.Abilities
 {
     public sealed class AbilityLoader : SingletonLoader<AbilityLoader, Ability>
     {
-        private readonly SortedList<ulong, Ability> byIndex = new SortedList<ulong, Ability>();
+        private readonly SortedList<ulong, Dictionary<AbilityTypes, Ability>> byIndex = new SortedList<ulong, Dictionary<AbilityTypes, Ability>>();
 
 
         public Ability GetLastAbility(TheChaddeningPlayer player, AbilityTypes abilityType)
@@ -21,8 +21,12 @@ namespace TheChaddening.Abilities
             ulong requiredStrength = 0; // We store the current strength to avoid having to inline methods. Its a bit faster but takes more RAM.
             Ability ability = null;
 
-            foreach (var fAbility in byIndex.Values)
+            foreach (var dict in byIndex.Values)
             {
+                if (!dict.ContainsKey(abilityType))
+                    continue;
+
+                var fAbility = dict[abilityType];
                 ulong useStrength = fAbility.GetRequiredStrengthToUse(player);
 
                 if (fAbility.CanUse(player) && fAbility.RequiredStrengthToUnlock <= player.Strength && useStrength >= requiredStrength && useStrength < player.ChargedStrength && fAbility.AbilityType == abilityType)
@@ -38,7 +42,10 @@ namespace TheChaddening.Abilities
 
         protected override void PostAdd(Mod mod, Ability item, Type type)
         {
-            byIndex.Add(item.RequiredStrengthToUnlock, item);
+            if (!byIndex.ContainsKey(item.RequiredStrengthToUnlock))
+                byIndex.Add(item.RequiredStrengthToUnlock, new Dictionary<AbilityTypes, Ability>());
+            
+            byIndex[item.RequiredStrengthToUnlock].Add(item.AbilityType, item);
         }
     }
 }

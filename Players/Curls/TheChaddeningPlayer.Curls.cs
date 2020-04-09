@@ -4,7 +4,7 @@ namespace TheChaddening.Players
 {
     public sealed partial class TheChaddeningPlayer : ModPlayer
     {
-        public float GetGainsFromCurl(float gainsPerCurl) => (gainsPerCurl * CurlingGainsMultiplier) * OverallCurlingGainsMultiplier;
+        public float GetGainsFromCurl(float gainsPerCurl) => (gainsPerCurl * TotalCurlingGainsMultiplier) * GlobalCurlingGainsMultiplier;
 
         public void Curl(float gainsPerCurl)
         {

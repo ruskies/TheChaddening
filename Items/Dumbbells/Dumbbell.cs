@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -13,6 +15,11 @@ namespace TheChaddening.Items.Dumbbells
             TERRARIA_DESCRIPTION_TOOLTIP = "Tooltip0",
             DUMBBELL_STRENGTH_REQUIREMENT = "DumbbellStrengthRequirements",
             DUMBBELL_CURL_GAIN = "DumbbellCurlGain";
+
+
+        private float _lastGains = 0;
+        private string _lastTooltip = null;
+
 
         protected Dumbbell(string displayName, string tooltip, int width, int height, ulong requiredStrength, float gainsPerCurl, int value = 0, int defense = 0, int rarity = ItemRarityID.White) : base(displayName, tooltip, width, height, value, defense, rarity)
         {
@@ -35,16 +42,45 @@ namespace TheChaddening.Items.Dumbbells
         {
             base.ModifyTooltips(tooltips);
 
-            TheChaddeningPlayer tcp = TheChaddeningPlayer.Get(Main.LocalPlayer);
 
-            if (tcp.Strength < RequiredStrength)
+            var chad = TheChaddeningPlayer.Get(Main.LocalPlayer);
+
+            if (chad.Strength < RequiredStrength)
                 tooltips.Add(new TooltipLine(mod, DUMBBELL_STRENGTH_REQUIREMENT, $"You need at least {RequiredStrength} to use this dumbbell!")
                 {
                     overrideColor = Color.Red
                 });
 
-            float gains = tcp.GetGainsFromCurl(GainsPerCurl);
-            tooltips.Add(new TooltipLine(mod, DUMBBELL_CURL_GAIN, $"You gain {gains} (rounded to {(ulong) gains}) strength each time you curl."));
+
+            var gains = chad.GetGainsFromCurl(GainsPerCurl);
+            var uGains = (ulong)gains;
+
+            var builder = new StringBuilder("You gain ").Append(uGains).Append(' ');
+
+
+            bool
+                gainsNotEqual = gains != GainsPerCurl,
+                uGainsSmaller = uGains < gains;
+
+
+            if (gainsNotEqual)
+                builder.AppendFormat("({0} + {1}", GainsPerCurl, gains - GainsPerCurl);
+
+            if (uGainsSmaller)
+                builder.Append(", rounded down");
+
+            if (gainsNotEqual || uGainsSmaller)
+                builder.Append(") ");
+
+
+            builder.Append("strength each time you curl.");
+
+
+            _lastTooltip = builder.ToString();
+            _lastGains = gains;
+
+
+            tooltips.Add(new TooltipLine(mod, DUMBBELL_CURL_GAIN, _lastTooltip));
         }
 
 

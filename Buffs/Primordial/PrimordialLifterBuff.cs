@@ -14,7 +14,7 @@ namespace TheChaddening.Buffs.Primordial
         {
             TheChaddeningPlayer tcp = TheChaddeningPlayer.Get(player);
 
-            tcp.OverallCurlingGainsMultiplier *= 4;
+            tcp.GlobalCurlingGainsMultiplier *= 4;
         }
 
 
