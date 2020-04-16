@@ -10,9 +10,6 @@ namespace TheChaddening.Players
 {
     public sealed partial class TheChaddeningPlayer
     {
-        private bool _isPrimordialLifter;
-
-
         public const float 
             PRIMORDIAL_LIFTER_MULTIPLIER = 4f,
             PRIMORDIAL_CHILDREN_MULTIPLIER = 2.5f;
@@ -85,14 +82,7 @@ namespace TheChaddening.Players
         }
 
 
-        public bool IsPrimordialLifter
-        {
-            get => _isPrimordialLifter;
-            internal set
-            {
-                _isPrimordialLifter = value;
-            }
-        }
+        public bool IsPrimordialLifter { get; internal set; }
 
         public bool IsPrimordialChild { get; internal set; }
         public int PrimordialGeneration { get; internal set; }
