@@ -28,16 +28,16 @@
                 PUMPKIN_MOON = 0,
                 FROST_MOON = 0,
 
-                GOLEM = 0,
+                GOLEM = 600000,
 
                 MARTIAN_INVASTION = 0,
 
                 THE_DUMBEST_INVASION_IN_TERRARIA = 0,
 
-                DUKE_FISHRON = 0,
+                DUKE_FISHRON = 700000,
 
-                LUNAR_CULTIST = 0,
-                FOUR_PILLARS = 0,
+                LUNAR_CULTIST = 800000,
+                FOUR_PILLARS = LUNAR_CULTIST,
                 MOON_LORD = 1000000;
         }
 

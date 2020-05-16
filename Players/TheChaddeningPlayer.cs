@@ -7,6 +7,7 @@ using TheChaddening.Commons;
 using TheChaddening.Items;
 using TheChaddening.Items.Dumbbells;
 using WebmilioCommons.Extensions;
+using WebmilioCommons.Networking;
 
 namespace TheChaddening.Players
 {
@@ -37,6 +38,7 @@ namespace TheChaddening.Players
         public override void Initialize()
         {
             InitializeCharge();
+            InitializePrimordialLifter();
 
             Strength = 1;
             TrueChad = true;
@@ -48,8 +50,11 @@ namespace TheChaddening.Players
         public override void OnEnterWorld(Player plr)
         {
             OnEnterWorldPrimordialLifter(plr);
+        }
 
-            plr.SendIfLocal<PlayerSynchronizationPacket>();
+        public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
+        {
+            new PlayerSynchronizationPacket(this).Send(fromWho, toWho);
         }
 
 

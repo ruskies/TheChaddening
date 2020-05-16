@@ -6,7 +6,8 @@ namespace TheChaddening.Buffs.Primordial
     public sealed class PrimordialLiftersBlessingBuff : ChadBuff
     {
         public PrimordialLiftersBlessingBuff() : base("Primordial Lifter's Blessing", 
-            "You are one of the many children of the primordial lifter and can share this blessing with others.\n")
+            "You are one of the many children of the primordial lifter and can share this blessing with others.\n",
+            canBeCleared: false)
         {
         }
 

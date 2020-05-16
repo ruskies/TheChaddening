@@ -4,6 +4,7 @@
     {
         Melee,
         Ranged,
-        Body
+        Body,
+        Special
     }
 }

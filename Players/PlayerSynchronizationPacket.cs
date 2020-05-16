@@ -1,26 +1,38 @@
 ﻿using System;
 using System.IO;
 using Terraria;
-using Terraria.ID;
+using TheChaddening.Networking;
+using WebmilioCommons.Networking;
 using WebmilioCommons.Networking.Packets;
 
 namespace TheChaddening.Players
 {
-    public class PlayerSynchronizationPacket : ModPlayerNetworkPacket<TheChaddeningPlayer>
+    public sealed class PlayerSynchronizationPacket : ModPlayerNetworkPacket<TheChaddeningPlayer>
     {
+        public PlayerSynchronizationPacket()
+        {
+        }
+
+        public PlayerSynchronizationPacket(TheChaddeningPlayer chad) : base(chad)
+        {
+        }
+
+
         protected override bool PostReceive(BinaryReader reader, int fromWho)
         {
-            if (!IsResponse && Main.netMode == NetmodeID.MultiplayerClient)
-            {
-                IsResponse = true;
-                Send(Main.myPlayer, Player.whoAmI);
-            }
+            string msg = $"{ModPlayer.player.name} just received player synchronization packet.\n" +
+                         $"{PrimordialLifter} {PrimordialChild} {PrimordialGeneration} {TrueChad}";
+
+
+            if (Main.dedServ)
+                Console.WriteLine(msg);
+            else
+                System.Diagnostics.Debug.WriteLine(msg);
+
 
             return true;
         }
 
-
-        public bool IsResponse { get; set; }
 
         public bool PrimordialLifter
         {
@@ -45,5 +57,8 @@ namespace TheChaddening.Players
             get => ModPlayer.TrueChad;
             set => ModPlayer.TrueChad = value;
         }
+
+
+        public override NetworkPacketBehavior Behavior => NetworkPacketBehavior.SendToClient;
     }
 }

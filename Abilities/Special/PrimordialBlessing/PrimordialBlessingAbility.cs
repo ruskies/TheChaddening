@@ -5,11 +5,11 @@ using Terraria.ModLoader;
 using TheChaddening.Players;
 using WebmilioCommons.Extensions;
 
-namespace TheChaddening.Abilities.Body.PrimordialBlessing
+namespace TheChaddening.Abilities.Special.PrimordialBlessing
 {
     public sealed class PrimordialBlessingAbility : Ability
     {
-        public PrimordialBlessingAbility() : base("body.giveBlessing", "Bless", 1, AbilityTypes.Body)
+        public PrimordialBlessingAbility() : base("special.giveBlessing", "Bless", 1, AbilityTypes.Special)
         {
         }
 
@@ -31,10 +31,6 @@ namespace TheChaddening.Abilities.Body.PrimordialBlessing
                 ModContent.ItemType<PrimordialLiftersBlessing>(), 1)].modItem as PrimordialLiftersBlessing;
 
             blessing.PrimordialGeneration = chad.PrimordialGeneration + 1;
-
-
-            if (chad.IsLocalPlayer())
-                blessing.Synchronize();
 
 
             return true;

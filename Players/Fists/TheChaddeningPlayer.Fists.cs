@@ -9,7 +9,7 @@ namespace TheChaddening.Players
         private void ProcessTriggersFists(TriggersSet triggersSet)
         {
             if (TheChaddeningMod.Instance.SwitchMode.JustPressed)
-                PunchingMode = PunchingMode.NextEnum();
+                PunchingMode = triggersSet.SmartSelect ? PunchingMode.PreviousEnum() : PunchingMode.NextEnum();
         }
 
 

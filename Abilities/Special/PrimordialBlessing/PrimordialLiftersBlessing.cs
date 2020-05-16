@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -7,7 +6,7 @@ using Terraria.ID;
 using TheChaddening.Items;
 using TheChaddening.Players;
 
-namespace TheChaddening.Abilities.Body.PrimordialBlessing
+namespace TheChaddening.Abilities.Special.PrimordialBlessing
 {
     public class PrimordialLiftersBlessing : ChadItem
     {
@@ -59,13 +58,15 @@ namespace TheChaddening.Abilities.Body.PrimordialBlessing
 
         public override bool OnPickup(Player player)
         {
-            TheChaddeningPlayer tcp = TheChaddeningPlayer.Get(player);
+            TheChaddeningPlayer chad = TheChaddeningPlayer.Get(player);
 
-            if (!tcp.TrueChad || tcp.IsPrimordial())
+
+            if (!chad.TrueChad || chad.IsPrimordial())
                 return false;
 
-            tcp.IsPrimordialChild = true;
-            tcp.PrimordialGeneration = PrimordialGeneration;
+
+            chad.BecomePrimordialChild(item);
+
 
             return false;
         }

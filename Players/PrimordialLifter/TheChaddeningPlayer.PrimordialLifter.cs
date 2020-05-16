@@ -1,10 +1,12 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using TheChaddening.Abilities.Special.PrimordialBlessing;
 using TheChaddening.Buffs.Primordial;
 using TheChaddening.Identities;
 using WebmilioCommons.Extensions;
 using WebmilioCommons.Identity;
+using WebmilioCommons.Networking;
 
 namespace TheChaddening.Players
 {
@@ -13,6 +15,24 @@ namespace TheChaddening.Players
         public const float 
             PRIMORDIAL_LIFTER_MULTIPLIER = 4f,
             PRIMORDIAL_CHILDREN_MULTIPLIER = 2.5f;
+
+        private const string PRIMORDIAL_LIFTER = "PrimordialLifter";
+
+
+        private bool
+            _isPrimordialLifter,
+            _isPrimordialChild;
+
+
+        internal void BecomePrimordialChild(Item item)
+        {
+            if (!(item.modItem is PrimordialLiftersBlessing primordialBlessing))
+                return;
+
+            PrimordialGeneration = primordialBlessing.PrimordialGeneration;
+            IsPrimordialChild = true;
+        }
+
 
         public bool IsPrimordial() => IsPrimordialLifter || IsPrimordialChild;
 
@@ -30,12 +50,15 @@ namespace TheChaddening.Players
         }
 
 
+        private void InitializePrimordialLifter()
+        {
+            if (!this.IsLocalPlayer())
+                return;
+        }
+
+
         private void OnEnterWorldPrimordialLifter(Player plr)
         {
-            if (!plr.IsLocalPlayer())
-                return;
-
-            IsPrimordialLifter = plr.name.Equals("$THECHAD") && IdentityManager.Is<WebmilioIdentity>();
         }
 
         private void PreUpdatePrimordialLifter()
@@ -71,20 +94,54 @@ namespace TheChaddening.Players
 
         private void LoadPrimordialLifter(TagCompound tag)
         {
-            IsPrimordialChild = tag.GetBool(nameof(IsPrimordialChild));
+            if (TheChaddeningMod.Instance.PrimordialGenes)
+                IsPrimordialLifter = tag.ContainsKey(PRIMORDIAL_LIFTER) && tag.GetBool(PRIMORDIAL_LIFTER) && IdentityManager.Is<WebmilioIdentity>();
+
+
+            IsPrimordialChild = tag.GetBool(nameof(IsPrimordialChild)) && !IsPrimordialLifter;
             PrimordialGeneration = tag.GetInt(nameof(PrimordialGeneration));
         }
 
         private void SavePrimordialLifter(TagCompound tag)
         {
+            if (IsPrimordialLifter)
+                tag.Add(PRIMORDIAL_LIFTER, true);
+
+
             tag.Add(nameof(IsPrimordialChild), IsPrimordialChild);
             tag.Add(nameof(PrimordialGeneration), PrimordialGeneration);
         }
 
 
-        public bool IsPrimordialLifter { get; internal set; }
+        public bool IsPrimordialLifter
+        {
+            get => _isPrimordialLifter;
+            internal set
+            {
+                if (!IdentityManager.Is<WebmilioIdentity>() || _isPrimordialLifter == value)
+                    return;
 
-        public bool IsPrimordialChild { get; internal set; }
+                _isPrimordialLifter = value;
+
+                NetworkPacketLoader.Instance.SendPacket<PrimordialLifterStatusChangedPacket>();
+            }
+        }
+
+
+        public bool IsPrimordialChild
+        {
+            get => _isPrimordialChild;
+            internal set
+            {
+                if (_isPrimordialChild == value)
+                    return;
+
+                _isPrimordialChild = value;
+
+                NetworkPacketLoader.Instance.SendPacket<PrimordialChildStatusChangedPacket>();
+            }
+        }
+
         public int PrimordialGeneration { get; internal set; }
     }
 }

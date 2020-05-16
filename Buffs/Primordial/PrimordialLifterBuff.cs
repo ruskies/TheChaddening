@@ -5,7 +5,9 @@ namespace TheChaddening.Buffs.Primordial
 {
     public sealed class PrimordialLifterBuff : ChadBuff
     {
-        public PrimordialLifterBuff() : base("Primordial Lifter", "You are the first one to ever lift.\n", true, canBeCleared: false)
+        public PrimordialLifterBuff() : base("Primordial Lifter", 
+            "You are the first one to ever lift.\n", 
+            hideTime:true, canBeCleared: false)
         {
         }
 
